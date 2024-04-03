@@ -1,9 +1,12 @@
+//! ovmf-prebuilt fork
+
 use anyhow::{anyhow, bail, Result};
 use clap::Parser;
 use std::fs;
 use std::path::PathBuf;
 use std::process::Command;
 
+#[allow(clippy::struct_field_names)]
 #[derive(Debug, Eq, PartialEq)]
 struct Release {
     prebuilt_git_tag: String,
@@ -17,6 +20,7 @@ impl Release {
     /// repo. The "-r1" at the end is so that we can do multiple releases
     /// of the same edk2 tag without overwriting previous ones (e.g. if
     /// we realize later we need to modify a build flag).
+    #[allow(clippy::or_fun_call)]
     fn from_tag(tag: &str) -> Result<Self> {
         let parts: Vec<_> = tag.rsplitn(2, '-').collect();
         let edk2_git_tag = parts[1];
@@ -39,6 +43,7 @@ impl Release {
     }
 
     /// Check if this release has already been pushed.
+    #[allow(unused_results)]
     fn exists(&self) -> bool {
         let mut cmd = Command::new("gh");
         cmd.arg("release").arg("view").arg(&self.prebuilt_git_tag);
@@ -46,6 +51,7 @@ impl Release {
     }
 
     /// Push the tarball as a new release.
+    #[allow(unused_results)]
     fn push(&self) -> Result<()> {
         let release_notes = format!(
             "edk2 tag: https://github.com/tianocore/edk2/releases/tag/{}",
@@ -66,6 +72,7 @@ impl Release {
     }
 }
 
+#[allow(unused_results)]
 fn build_tarball(opt: &Opt, release: &Release) -> Result<PathBuf> {
     let container_tag = "ovmf_prebuilt";
 
@@ -115,6 +122,7 @@ struct Opt {
     tag: String,
 }
 
+#[allow(unused_results)]
 fn main() -> Result<()> {
     let opt = Opt::parse();
 

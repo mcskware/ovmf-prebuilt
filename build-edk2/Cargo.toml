@@ -3,6 +3,9 @@ name = "build-edk2"
 version = "0.0.0"
 publish = false
 edition.workspace = true
+description = "Fork of ovmf-prebuilt"
+license = "None"
+repository = "https://github.com/mcskware/ovmf-prebuilt"
 
 [dependencies]
 anyhow = "1.0.0"

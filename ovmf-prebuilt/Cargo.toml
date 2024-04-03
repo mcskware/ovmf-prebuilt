@@ -4,5 +4,8 @@ version = "0.2.0"
 edition.workspace = true
 categories = ["development-tools"]
 keywords = ["edk2", "firmware", "ovmf", "prebuilt"]
+description = "Fork of ovmf-prebuilt"
+license = "None"
+repository = "https://github.com/mcskware/ovmf-prebuilt"
 
 [dependencies]
