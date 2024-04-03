@@ -1,1 +1,1 @@
-
+#![feature(restricted_std)]
