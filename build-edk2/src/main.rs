@@ -1,4 +1,5 @@
 //! ovmf-prebuilt fork
+#![feature(restricted_std)]
 
 use anyhow::{anyhow, bail, Result};
 use clap::Parser;
